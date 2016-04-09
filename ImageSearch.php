@@ -6,7 +6,7 @@ class ImageSearch
 
 	public function __construct()
 	{
-		$this->apiKey = file_get_contents(__DIR_ . '/api_key');
+		$this->apiKey = file_get_contents(__DIR__ . '/api_key');
 	}
 
 	public function search($subject, $limitPerPage, $page)

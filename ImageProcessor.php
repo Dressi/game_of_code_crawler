@@ -27,7 +27,7 @@ class ImageProcessor
 			return false;
 		}
 
-		$colors = $this->getColor($imagePath);
+		$colors = $this->getColorByAverage($imagePath);
 
 		return [
 			'path'   => $imagePath,
@@ -61,6 +61,47 @@ class ImageProcessor
 		return [
 			'index' => $result,
 			'rgb'   => $colorsPalette
+		];
+	}
+
+	private function getColorByAverage($imagePath)
+	{
+		$original = imagecreatefromjpeg($imagePath);
+		$width = imagesx($original);
+		$height = imagesy($original);
+
+		$colorsSum = [0,0,0];
+
+		$n = $width * $height;
+
+		for ($i=0; $i< $width; $i++)
+		{
+			for ($j=0; $j< $height; $j++)
+			{
+				$rgb = ImageColorAt($original, $i, $j);
+
+				$colorsSum[0] += ($rgb >> 16) & 0xFF;
+				$colorsSum[1] += ($rgb >> 8) & 0xFF;
+				$colorsSum[2] += $rgb & 0xFF;
+			}
+		}
+
+		$colors = [
+			$colorsSum[0] / $n,
+			$colorsSum[1] / $n,
+			$colorsSum[2] / $n,
+		];
+
+		$palette = imagecreatefrompng('/home/tessera/crawler/ref.png');
+
+		imagetruecolortopalette($palette, false, 256);
+
+		$result = imagecolorclosest($palette, $colors[0], $colors[1], $colors[2]);
+		$colorsPalette = imagecolorsforindex($palette, $result);
+
+		return [
+				'index' => $result,
+				'rgb'   => $colorsPalette
 		];
 	}
 

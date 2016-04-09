@@ -4,8 +4,9 @@ require_once 'ImageSearch.php';
 require_once 'ImageProcessor.php';
 
 $limit = 200;
-$subjectList = ['dog', 'cat', 'fish', 'horse', 'bird', 'goat', 'sheep', 'mouse', 'elephant', 'fox', 'wolf'];
-
+//$category =
+//$subjectList = ['dog', 'cat']; //, 'fish', 'horse', 'bird', 'goat', 'sheep', 'mouse', 'elephant', 'fox', 'wolf'];
+$subjectList = ['landscape', 'mountains', 'river', 'lake'];
 
 $imageSearch = new ImageSearch();
 $imageProcessor = new ImageProcessor();
@@ -30,7 +31,7 @@ foreach ($subjectList as $subject) {
 
 			$id = $data['colors']['index'];
 
-			$newFilePath = '/home/tessera/source_images/animals/' . $id;
+			$newFilePath = '/home/tessera/source_images/nature/' . $id;
 			$counterFileName = $newFilePath . '/counter';
 
 			if (!file_exists($newFilePath)) {

@@ -4,7 +4,6 @@ require_once 'ImageSearch.php';
 require_once 'ImageProcessor.php';
 
 $limit = 200;
-//$category =
 //$subjectList = ['dog', 'cat']; //, 'fish', 'horse', 'bird', 'goat', 'sheep', 'mouse', 'elephant', 'fox', 'wolf'];
 $subjectList = ['landscape', 'mountains', 'river', 'lake'];
 

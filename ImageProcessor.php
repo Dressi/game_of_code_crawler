@@ -2,7 +2,7 @@
 
 class ImageProcessor
 {
-	private $path            = '/home/tessera/source_images';
+	private $path            = '/mnt/resource/source_images';
 	private $temporaryFolder = '/temporary';
 	private $temporaryPath   = '';
 

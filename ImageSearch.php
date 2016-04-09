@@ -9,7 +9,7 @@ class ImageSearch
 		$this->apiKey = file_get_contents(__DIR__ . '/api_key');
 	}
 
-	public function search($subject, $limitPerPage, $page)
+	public function search($subject, $limitPerPage, $page, $category)
 	{
 		$url = 'https://pixabay.com/api/';
 		$parameters = [
@@ -17,6 +17,7 @@ class ImageSearch
 			'q'   => $subject,
 			'per_page' => $limitPerPage,
 			'page' => $page,
+			'category' => $category
 		];
 
 		$url .= '?' . http_build_query($parameters);

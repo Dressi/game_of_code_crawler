@@ -10,7 +10,7 @@ $imageIdList = json_decode($idListJson);
 $limit = 200;
 $colors = ['red', 'green', 'blue', 'yellow', 'purple', 'black', 'brown', 'gold', 'pink', 'white', 'orange', 'cyan'];
 
-$categoryList = ['animals', 'people', 'food', 'travel'];
+$categoryList = ['religion'];
 
 //	'fashion', 'nature', 'backgrounds', 'science', 'education', 'feelings', 'religion', 'health', 'places', 'animals', 'industry',
 //	'food', 'computer', 'sports', 'transportation', 'travel', 'buildings', 'business', 'music'];
@@ -22,6 +22,8 @@ $colorIndexCounters = [];
 
 foreach ($categoryList as $category)
 {
+	$colorIndexCounters = [];
+
 	foreach ($colors as $color) {
 		$page = 1;
 		while (true) {
